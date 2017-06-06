@@ -1,0 +1,10 @@
+System.ChangedDate,
+Microsoft.VSTS.CodeReview.AcceptedDate
+Microsoft.VSTS.Common.RejectedBy
+Microsoft.VSTS.Common.ActivatedDate
+
+Microsoft.VSTS.CMMI.Analysis
+NBU.AnsweredBy
+NBU.AnsweredDate
+NBU.API
+NBU.ApprovedBy
