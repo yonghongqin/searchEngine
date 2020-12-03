@@ -1,0 +1,2 @@
+Optima Search Version: ${optima.search.engine.version}
+Spring Boot Version: ${spring-boot.version}
