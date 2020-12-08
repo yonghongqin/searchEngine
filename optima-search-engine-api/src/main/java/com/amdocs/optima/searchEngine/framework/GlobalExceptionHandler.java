@@ -2,17 +2,22 @@ package com.amdocs.optima.searchEngine.framework;
 
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.amdocs.optima.searchEngine.base.utils.IndexManager;
+
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
     
-    private final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(GlobalExceptionHandler.class);
+	private static Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
     
     @ExceptionHandler({Exception.class,RuntimeException.class})
     public String handleException(HttpServletRequest request, Exception ex) {

@@ -40,8 +40,8 @@ import java.util.stream.Stream;
 
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Map;
@@ -61,7 +61,7 @@ public class Utils {
     public static final int FORMAT_AUTO = 7;
     public static final int DIRECTORY_LEVEL = 2;
 
-    private final Logger log = Logger.getLogger(this.getClass().getName());
+    private final Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
     // Utility function to put a stack trace into a string and return it
     public static String getStackTrace(Throwable t) {

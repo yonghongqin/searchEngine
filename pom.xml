@@ -21,6 +21,7 @@
 	</properties>
      <modules>
 		<module>optima-search-engine-api</module>
+		<module>optima-search-engine-batch</module>
     </modules>
     <packaging>pom</packaging>
 	<dependencies>

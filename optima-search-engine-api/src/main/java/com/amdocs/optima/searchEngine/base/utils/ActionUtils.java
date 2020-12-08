@@ -31,7 +31,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexReader;
@@ -78,8 +77,6 @@ public class ActionUtils {
         
         return newString;
     }
-
-    private final Logger log = Logger.getLogger(getClass());
 
     public static List<String> searchBasedOnIndexDir(SearchForm form, String indexPath, String subIndexDir) throws IOException {
         List<String> dirToSearch = new ArrayList<>();

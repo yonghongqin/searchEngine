@@ -6,7 +6,8 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.search.IndexSearcher;
@@ -14,10 +15,11 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.highlight.Highlighter;
 import org.apache.lucene.search.highlight.QueryScorer;
 import org.apache.lucene.store.FSDirectory;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 public class IndexManager {
 
-	private static Logger log = Logger.getLogger(IndexManager.class);
+	private static Logger log = LoggerFactory.getLogger(IndexManager.class);
 	private static IndexManager instance = null;
 	private Map indexReaderMap;
 	

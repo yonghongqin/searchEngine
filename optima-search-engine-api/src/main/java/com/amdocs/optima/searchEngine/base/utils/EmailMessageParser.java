@@ -10,7 +10,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -20,7 +21,7 @@ public class EmailMessageParser {
 
 	private static EmailMessageParser instance = null;
 
-	private Logger log = Logger.getLogger(EmailMessageParser.class);
+	private Logger log = LoggerFactory.getLogger(EmailMessageParser.class);
 
 	private DocumentBuilderFactory factory;
 	private DocumentBuilder builder;

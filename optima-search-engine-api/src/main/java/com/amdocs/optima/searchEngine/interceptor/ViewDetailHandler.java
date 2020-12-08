@@ -6,12 +6,14 @@
 package com.amdocs.optima.searchEngine.interceptor;
 
 
+import com.amdocs.optima.searchEngine.framework.GlobalExceptionHandler;
 import com.amdocs.optima.searchEngine.framework.IConstants;
 
 import com.amdocs.optima.searchEngine.service.IWebManagerService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.env.Environment;
@@ -26,10 +28,10 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 public class ViewDetailHandler extends HandlerInterceptorAdapter {
 
     @Autowired
-    @Qualifier("webmanagerService")
-    private IWebManagerService webmanagerService;
+//    @Qualifier("webmanagerService")
+    private com.amdocs.optima.searchEngine.repo.LogRepository LogRepository;
 
-    private final Logger log = Logger.getLogger(this.getClass().getName());
+    private static Logger log = LoggerFactory.getLogger(ViewDetailHandler.class);
 
     @Autowired
     Environment conf;
@@ -48,7 +50,7 @@ public class ViewDetailHandler extends HandlerInterceptorAdapter {
             webmanagerService.saveErrorLog(request.getSession().getId(),requestType+"-" + requestId, (short)2, ex);
         }
          
-        webmanagerService.saveQueryLog(request.getSession().getId(), null,request,isSuccess);
+        LogRepository.save(entity).saveQueryLog(request.getSession().getId(), null,request,isSuccess);
         log.debug("view search request saving log done");
         
 

@@ -1,8 +1,8 @@
 
 package com.amdocs.optima.searchEngine.base.utils;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
 public class LogUtil {
     
      public static void info(String message, String className) {
-        Logger logger = LogManager.getLogger(className);
+        Logger logger = LoggerFactory.getLogger(className);
         logger.info(message);
     }
     

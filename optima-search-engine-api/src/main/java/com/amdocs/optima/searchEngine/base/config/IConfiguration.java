@@ -1,6 +1,6 @@
 package com.amdocs.optima.searchEngine.base.config;
 
-interface IConfiguration {
+public interface IConfiguration {
 
     String TRAC_LUCENE_INDEX_PROPERTY = "webtrac.lucene.index.dir";
     String TRAC_URL_REDIRECT = "webtrac.url.redirect";

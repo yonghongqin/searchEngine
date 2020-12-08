@@ -43,7 +43,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class EmailUtils {
 	
@@ -74,7 +75,7 @@ public class EmailUtils {
 		public void setContentId(String contentId) { this.contentId = contentId; }
 	}
 
-	private static Logger log = Logger.getLogger (EmailUtils.class.getName());
+	private static Logger log = LoggerFactory.getLogger (EmailUtils.class.getName());
 	private static final String revision = "$Id$";
 
 	/**

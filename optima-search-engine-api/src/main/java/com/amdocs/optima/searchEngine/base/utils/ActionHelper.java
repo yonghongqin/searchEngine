@@ -8,7 +8,7 @@ import com.amdocs.optima.searchEngine.framework.IConstants.DocumentTypeExtension
 import com.amdocs.optima.searchEngine.framework.IConstants.SearchOptions;
 import com.amdocs.optima.searchEngine.model.docs.TFS;
 import com.amdocs.optima.searchEngine.model.webmanager.SearchEngineErrorLog;
-import com.amdocs.optima.searchEngine.service.IWebManagerService;
+//import com.amdocs.optima.searchEngine.service.IWebManagerService;
 //import com.amdocs.optima.searchEngine.tfs.TfsUtils;
 //import com.microsoft.tfs.core.TFSTeamProjectCollection;
 //import com.microsoft.tfs.core.clients.workitem.WorkItemClient;
@@ -40,7 +40,8 @@ import java.util.logging.Level;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.document.Document;
@@ -78,15 +79,13 @@ public class ActionHelper {
     @Autowired
     Environment conf;
     
-    @Autowired
-    @Qualifier("webmanagerService")
-    IWebManagerService webmanagerService;
+//    @Autowired
+//    @Qualifier("webmanagerService")
+//    IWebManagerService webmanagerService;
     
-    @Autowired
-    private RestTemplate restTemplate;
+//    @Autowired
+//    private RestTemplate restTemplate;
     
-    
-    private final Logger log = Logger.getLogger(getClass());
 
     public List<SearchResultObject> searchDocumentHelper(SearchForm form, String searchString, String indexBase, ModelMap model, Analyzer analyzer)
             throws Exception {
@@ -234,34 +233,36 @@ public class ActionHelper {
     }
 
     final static String TFS_JNI_DIR = "com.microsoft.tfs.jni.native.base-directory";
+    
+    //todo: TFS 
 
-    public WorkItemClient getWorkItemClient() {
-        WorkItemClient workItemClient = null;
-        try {
-            if (System.getProperty(TFS_JNI_DIR) == null) {
-                System.setProperty(TFS_JNI_DIR, conf.getProperty(IConfiguration.TFS_NATIVE_DIR));
-//                Properties properties=System.getProperties();
-//                properties.setProperty(TFS_JNI_DIR, conf.getProperty(IConfiguration.TFS_NATIVE_DIR));
-                log.info("tfs native dir from config="+conf.getProperty(IConfiguration.TFS_NATIVE_DIR));
-                log.info("tfs native dir from system="+System.getProperty(TFS_JNI_DIR));
-                
-            }
-
-            byte[] base64decodedBytes = Base64.getDecoder().decode(conf.getProperty(IConfiguration.TFS_URL_PASSWORD));
-            Credentials credentials;
-
-            credentials = new UsernamePasswordCredentials(conf.getProperty(IConfiguration.TFS_URL_USERNAME), new String(base64decodedBytes, "utf-8"));
-
-            URI uri = new URI(conf.getProperty(IConfiguration.TFS_URL_REDIRECT));
-            TFSTeamProjectCollection tpc = new TFSTeamProjectCollection(uri, credentials);
-            Project project = tpc.getWorkItemClient().getProjects().get("NBU");
-            workItemClient = project.getWorkItemClient();
-        } catch (UnsupportedEncodingException | URISyntaxException ex) {
-            log.error("Running into Exception:"+ex);
-            java.util.logging.Logger.getLogger(TfsUtils.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return workItemClient;
-    }
-
+//    public WorkItemClient getWorkItemClient() {
+//        WorkItemClient workItemClient = null;
+//        try {
+//            if (System.getProperty(TFS_JNI_DIR) == null) {
+//                System.setProperty(TFS_JNI_DIR, conf.getProperty(IConfiguration.TFS_NATIVE_DIR));
+////                Properties properties=System.getProperties();
+////                properties.setProperty(TFS_JNI_DIR, conf.getProperty(IConfiguration.TFS_NATIVE_DIR));
+//                log.info("tfs native dir from config="+conf.getProperty(IConfiguration.TFS_NATIVE_DIR));
+//                log.info("tfs native dir from system="+System.getProperty(TFS_JNI_DIR));
+//                
+//            }
+//
+//            byte[] base64decodedBytes = Base64.getDecoder().decode(conf.getProperty(IConfiguration.TFS_URL_PASSWORD));
+//            Credentials credentials;
+//
+//            credentials = new UsernamePasswordCredentials(conf.getProperty(IConfiguration.TFS_URL_USERNAME), new String(base64decodedBytes, "utf-8"));
+//
+//            URI uri = new URI(conf.getProperty(IConfiguration.TFS_URL_REDIRECT));
+//            TFSTeamProjectCollection tpc = new TFSTeamProjectCollection(uri, credentials);
+//            Project project = tpc.getWorkItemClient().getProjects().get("NBU");
+//            workItemClient = project.getWorkItemClient();
+//        } catch (UnsupportedEncodingException | URISyntaxException ex) {
+//            log.error("Running into Exception:"+ex);
+//            java.util.logging.Logger.getLogger(TfsUtils.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return workItemClient;
+//    }
+//
 
 }
